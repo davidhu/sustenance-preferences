@@ -1,5 +1,7 @@
 <?php
 	include "api/include.php";
+	include "api/logincheck.php";
+	
 	$input = $_GET["user"];
 	$search = '%' . $input . '%';
 	$uid = $_SESSION["uid"];

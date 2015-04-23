@@ -1,7 +1,7 @@
 <?php
 
 	include "api/include.php";
-
+	include "api/logincheck.php";
 	$uid = $_SESSION["uid"];
 	$rid = $_GET["rid"];
 

@@ -2,14 +2,12 @@
 
   session_start();
 
-//file to create all the tables in the database
   function check($queryResult) {
     if (!$queryResult) {
       die();
     }
   }
-
-
+  
   $dbconn = pg_connect("dbname=postgres user=postgres password=password");
 
   check($dbconn);
@@ -19,4 +17,3 @@
 	check($dbconn);
 
 ?>
-

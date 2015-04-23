@@ -1,6 +1,6 @@
 <?php
 	include 'api/include.php';
-	
+	include 'api/logincheck.php';
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +12,6 @@
 	</head>
 
 	<body>
-
 		<div class="container">
 			<?php include "navbar.php"; ?> 
 			<h1 class="welcome">WELCOME TO SUSTENANCE PREFERENCES!</h1>

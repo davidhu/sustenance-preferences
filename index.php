@@ -48,7 +48,7 @@
 										</div>
 										<?php
 											if ($notLogIn == 1) {
-												echo "<div>Login unsuccessful. Please try again.</div>";
+												echo "<div class='label label-warning'>Login unsuccessful. Please try again.</div>";
 											}
 										?>
 										<div class="form-group text-center">

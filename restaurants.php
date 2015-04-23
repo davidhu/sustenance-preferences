@@ -1,7 +1,7 @@
 <?php
 
 	include "api/include.php";
-
+	include 'api/logincheck.php';
 ?>
 <!DOCTYPE html>
 <html>
