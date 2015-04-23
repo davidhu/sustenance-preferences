@@ -1,3 +1,8 @@
+<?php
+	include 'api/include.php';
+	$uid = $_SESSION["uid"];
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -21,22 +26,30 @@
 					<th>Date Added</th>
 				</tr>
 
-				<tr>
-					<td>1</td>
-					<td>Shake Shack</td>
-					<td>Apple</td>
-					<td>Yes!</td>
-					<td>June 10, 1990</td>
-				</tr>
-
-				<tr>
-					<td>2</td>
-					<td>Shake Shack</td>
-					<td>Burger</td>
-					<td>No!</td>
-					<td>June 10, 1991</td>
-				</tr>
-
+				<?php
+					$stmt = 'SELECT rname, fname, delish, fdadded FROM fooddiaries
+						NATURAL JOIN restaurants NATURAL JOIN foods
+						WHERE uid = $1 ORDER BY fdadded DESC;';
+					$query = pg_prepare($dbconn, "diary_info", $stmt);
+					$result = pg_execute($dbconn, "diary_info", array($uid));
+					
+					$i = 1;
+					while ($row = pg_fetch_row($result)) {
+						echo "<tr>";
+						echo "<td>$i</td>";
+						echo "<td>$row[0]</td>";
+						echo "<td>$row[1]</td>";
+						if ($row[2] == 'n') {
+							echo "<td>No!</td>";
+						}
+						else {
+							echo "<td>Yes!</td>";
+						}					
+						echo "<td>$row[3]</td>";
+						echo "</tr>";	
+						$i++;
+					}
+				?>
 			</table>
     </div>
 

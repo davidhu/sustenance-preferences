@@ -2,6 +2,7 @@
 
 	include "api/include.php";
 
+	$uid = $_SESSION["uid"];
 	$rid = $_GET["rid"];
 
 ?>
@@ -27,6 +28,7 @@
 				<div class="col-md-6">
 				
 					<table class="table table-bordered">
+						<input hidden id="rid" value=<?php echo $rid; ?>></input>
 					<?php
 
 					$stmt1 = "SELECT rname, address, description FROM restaurants WHERE rid = $1";
@@ -68,26 +70,26 @@
 						$result = pg_prepare($dbconn, "query2", $stmt2);
 						$result = pg_execute($dbconn, "query2", array($rid));
 
+						$stmt3 = "SELECT uid FROM foods NATURAL JOIN suggestions WHERE uid = $1 AND rid = $2 AND fid = $3";
+						$result2 = pg_prepare($dbconn, "query3", $stmt3);
+						
 						while ($row = pg_fetch_row($result)) {
 
 							echo "<tr>";
 							echo "<td>$row[1]</td>";
 							echo "<td>$row[2]</td>";
-							echo "<td><a class='btn btn-primary' href='add_entry.php?rid=$rid&fid=$row[0]' role='button'>Add to Diary</a>&nbsp;<a class='btn btn-primary' href='#' role='button'>Recommend to Other</a></td>";
+							
+							$result2 = pg_execute($dbconn, "query3", array($uid, $rid, $row[0]));
+							echo "<td><a class='btn btn-primary' href='add_entry.php?rid=$rid&fid=$row[0]' role='button'>Add to Diary</a>&nbsp;";
+							if (pg_fetch_row($result2)) {
+								echo "<a class='btn btn-success alrec' role='button' disabled>Already Recommended</a>";
+							} else {
+								echo "<a class='btn btn-primary rec' role='button' value=" . $row[0] . ">Recommend to Others</a>";
+							}
+							echo "</td>";
 							echo "</tr>";
 						}
-/*
-						<tr>
-							<td>Apple</td>
-							<td>10</td>
-							<td><a class="btn btn-primary" href="add_entry.php" role="button">Add to Diary</a>&nbsp;<a class="btn btn-primary" href="#" role="button">Recommend to Others</a></td>
-						</tr>
-						<tr>
-							<td>Burger</td>
-							<td>10</td>
-							<td><a class="btn btn-primary" href="add_entry.php" role="button">Add to Diary</a>&nbsp;<a class="btn btn-primary" href="#" role="button">Recommend to Others</a></td>
-						</tr>
-*/
+
 						?>
 					</table>
 
@@ -98,6 +100,6 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
-	<script src=""></script>
+	<script src="js/restaurant.js"></script>
 	</body>
 </html>
