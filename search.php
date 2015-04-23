@@ -47,7 +47,7 @@
 					$i++;
 				}
 				
-				$stmt2 = "SELECT uid, username, first, last FROM users WHERE username LIKE $1 AND uid NOT IN (SELECT receiver FROM friends WHERE sender = $2)";
+				$stmt2 = "SELECT uid, username, first, last FROM users WHERE username LIKE $1 AND uid NOT IN (SELECT receiver FROM friends WHERE sender = $2) AND uid != $2";
 				$result = pg_prepare($dbconn, "query2", $stmt2);
 				$result = pg_execute($dbconn, "query2", array($search, $uid));
 				
