@@ -1,8 +1,7 @@
 <?php
-
 	include "api/include.php";
-	$search = $_GET["user"];
-	$search = '%' . $search . '%';
+	$input = $_GET["user"];
+	$search = '%' . $input . '%';
 
 ?>
 <!DOCTYPE html>
@@ -41,7 +40,8 @@
 					echo "<td>$row[1]</td>";
 					echo "<td>$row[2]</td>";
 					echo "<td>$row[3]</td>";
-					echo "<td><button type='button' class='btn btn-success'>Add</button></td>";
+					//echo "<td><button type='button' class='btn btn-success'>Add</button></td>";
+					echo "<td><a class='btn btn-success' href='add_friend.php?user={$input}&fid=$row[0]' role='button'>Add</a></td>";
 					echo "</tr>";
 					$i++;
 				}

@@ -1,3 +1,18 @@
+<?php
+	include 'api/include.php';
+	
+	$uid = $_SESSION["uid"];
+	
+	$stmt = 'SELECT username, first, last, fadded
+		FROM friends INNER JOIN users ON (friends.sender = users.uid)
+		WHERE uid = $1';
+	$query = pg_prepare($dbconn, "friend_info", $stmt);
+	$result = pg_execute($dbconn, "friend_info", array($uid));
+	
+	$friend_details = pg_fetch_all($result);
+	//echo $friend_details;
+	
+?>
 <!DOCTYPE html>
 <html>
 	<head>

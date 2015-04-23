@@ -60,7 +60,7 @@
 	$stmt6 = 'CREATE TABLE friends (
 		sender integer NOT NULL,
 		receiver integer NOT NULL,
-		fadded date,
+		fadded date default now(),
 		PRIMARY KEY(sender, receiver)
 	)';
 	
