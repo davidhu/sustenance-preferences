@@ -13,12 +13,9 @@
 	</head>
 
 	<body>
-
 		<div class="container">
 			<?php include "navbar.php"; ?> 
-
 			<table class="table table-hover">
-			
 				<tr>
 					<th></th>
 					<th>Restaurant</th>
@@ -39,10 +36,8 @@
 					$i++;
 					}
 				?>
-				
 			</table>
     </div>
-
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>

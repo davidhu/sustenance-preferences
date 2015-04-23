@@ -38,12 +38,6 @@
 					echo "</tr>";	
 					$i++;
 				}
-
-//				<tr class="clickable" data-href="restaurant.php?name=Shake+Shack">
-//					<td>1</td>
-//					<td>Shake Shack</td>
-//					<td>2 Metrotech</td>
-//				</tr>
 				?>
 			</table>
 		</div>

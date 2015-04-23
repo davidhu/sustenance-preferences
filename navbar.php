@@ -14,13 +14,6 @@
 		<ul class="nav navbar-nav">
 			<li><a href="profile.php">Profile</a></li>
 			<li><a href="friends.php">Friends</a></li>
-<!--			<li class="dropdown">
-				<a data-toggle="dropdown" class="dropdown-toggle" href="#">Food Diary<b class="caret"></b></a>
-				<ul role="menu" class="dropdown-menu">
-					<li><a href="add_entry.php">Add Entry</a></li>
-					<li><a href="diary.php">View Diary</a></li>
-				</ul>
-			</li>-->
 			<li><a href="diary.php">Food Diary</a></li>
 			<li><a href="restaurants.php">Restaurants</a></li>
 			<li class="dropdown">

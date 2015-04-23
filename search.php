@@ -43,7 +43,6 @@
 					echo "<td>$row[1]</td>";
 					echo "<td>$row[2]</td>";
 					echo "<td>$row[3]</td>";
-					//echo "<td><button type='button' class='btn btn-success'>Add</button></td>";
 					echo "<td><a class='btn btn-success add' role='button' style='display: none;'>Add<input hidden value=$row[0]></input></a><a class='btn btn-danger remove' role='button'>Remove<input hidden value=$row[0]></input></a></td>";
 					echo "</tr>";
 					$i++;
@@ -59,36 +58,13 @@
 					echo "<td>$row[1]</td>";
 					echo "<td>$row[2]</td>";
 					echo "<td>$row[3]</td>";
-					//echo "<td><button type='button' class='btn btn-success'>Add</button></td>";
 					echo "<td><a class='btn btn-success add' role='button'>Add<input hidden value=$row[0]></input></a><a class='btn btn-danger remove' role='button' style='display: none;'>Remove<input hidden value=$row[0]></input></a></td>";
 					echo "</tr>";
 					$i++;
 				}
-/*
-				<tr>
-					<td>1</td>
-					<td>apple</td>
-					<td>John</td>
-					<td>Smith</td>
-					<td>
-						<button type="button" class="btn btn-success">Add</button>
-					</td>
-				</tr>
-
-				<tr>
-					<td>2</td>
-					<td>apple2</td>
-					<td>John</td>
-					<td>Smith2</td>
-					<td>
-						<button type="button" class="btn btn-success">Add</button>
-					</td>
-				</tr>
-*/
 				?>
 			</table>
     </div>
-
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>

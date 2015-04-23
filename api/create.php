@@ -90,8 +90,18 @@
 	$result = pg_query($dbconn, $stmt8);
 	check($result, "suggestions table");
 	
+	$stmt9 = "CREATE TABLE recommended (
+		uid integer,
+		rid integer,
+		radded timestamp,
+		PRIMARY KEY(uid, rid)
+	)";
 	
-	$stmt9 = "INSERT INTO users (username, email, password, first, last, birthdate, gender) VALUES
+	$result = pg_query($dbconn, $stmt9);
+	check($result, "recommnded table");
+	
+	
+	$stmt10 = "INSERT INTO users (username, email, password, first, last, birthdate, gender) VALUES
 ('turducken','turducken@gmail.com','turducken','Tur','Ducken','2005-01-26','m'),
 ('giant2','giant2@gmail.com','147258369','Alan','Smith','2008-10-11','f'),
 ('digglet','digglet@gmail.com','741852963','Jack','Smith','2000-05-02','f'),
@@ -158,7 +168,7 @@ INSERT INTO foods VALUES
 (9,2,'Caprese Sandwich','Ciabatta fresh mozzarella, tomatoes, arugula, mayo & basil pesto. caprese with all natural chicken'),
 (10,1,'Pizza','');";
 
-	$result = pg_query($dbconn, $stmt9);
+	$result = pg_query($dbconn, $stmt10);
 	check($result, "add in data");
 	
 	

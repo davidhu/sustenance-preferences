@@ -3,17 +3,8 @@
 	include 'api/logincheck.php';
 	
 	$uid = $_SESSION["uid"];
-/*	
-	$stmt = 'SELECT username, first, last, fadded
-		FROM friends INNER JOIN users ON (friends.sender = users.uid)
-		WHERE uid = $1';
-	$query = pg_prepare($dbconn, "friend_info", $stmt);
-	$result = pg_execute($dbconn, "friend_info", array($uid));
-	
-	$friend_details = pg_fetch_all($result);
-*/	//echo $friend_details;
-	
 ?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -56,30 +47,6 @@
 					echo "</tr>";
 					$i++;
 				}
-					
-/*
-				<tr>
-					<td>1</td>
-					<td>apple</td>
-					<td>John</td>
-					<td>Smith</td>
-					<td>June 10, 1990</td>
-					<td>
-						<button type="button" class="btn btn-danger">Remove</button>
-					</td>
-				</tr>
-
-				<tr>
-					<td>2</td>
-					<td>apple2</td>
-					<td>John</td>
-					<td>Smith2</td>
-					<td>June 10, 1991</td>
-					<td>
-						<button type="button" class="btn btn-danger">Remove</button>
-					</td>
-				</tr>
-*/
 				?>
 			</table>
     </div>
