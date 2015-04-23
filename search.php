@@ -41,7 +41,7 @@
 					echo "<td>$row[2]</td>";
 					echo "<td>$row[3]</td>";
 					//echo "<td><button type='button' class='btn btn-success'>Add</button></td>";
-					echo "<td><a class='btn btn-success' href='add_friend.php?user={$input}&fid=$row[0]' role='button'>Add</a></td>";
+					echo "<td><a class='btn btn-success' role='button'>Add<input hidden value=$row[0]></input></a></td>";
 					echo "</tr>";
 					$i++;
 				}
@@ -74,6 +74,6 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
-	<script src=""></script>
+	<script src="js/search.js"></script>
 	</body>
 </html>
