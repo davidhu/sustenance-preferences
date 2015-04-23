@@ -1,3 +1,8 @@
+<?php
+	include 'api/include.php';
+	$uid = $_SESSION["uid"];
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,21 +17,28 @@
 			<?php include "navbar.php"; ?> 
 
 			<table class="table table-hover">
-
+			
 				<tr>
 					<th></th>
 					<th>Restaurant</th>
 					<th>Food</th>
 					<th>Date Suggested</th>
 				</tr>
-
-				<tr>
-					<td>1</td>
-					<td>Shake Shack</td>
-					<td>Apple</td>
-					<td>June 11, 1990</td>
-				</tr>
-
+				
+				<?php
+					$stmt = "SELECT rname, fname, sadded
+						FROM foods NATURAL JOIN suggestions NATURAL JOIN restaurants
+						WHERE uid = $1";
+					$query = pg_prepare($dbconn, "suggestinfo", $stmt);
+					$result = pg_execute($dbconn, "suggestinfo", array($uid));
+					
+					$i = 1;
+					while ($row = pg_fetch_row($result)) {
+						echo "<tr><td>$i</td><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td></tr>";
+					$i++;
+					}
+				?>
+				
 			</table>
     </div>
 

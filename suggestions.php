@@ -1,3 +1,9 @@
+<?php
+	include 'api/include.php';
+	
+	$uid = $_SESSION["uid"];
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -21,14 +27,21 @@
 					<th>Date Suggested</th>
 				</tr>
 
-				<tr>
-					<td>1</td>
-					<td>applejack</td>
-					<td>Shake Shack</td>
-					<td>Apple</td>
-					<td>June 11, 1990</td>
-				</tr>
-
+				<?php
+					$stmt = "SELECT username, rname, fname, sadded
+						FROM friends T, friends U, users, restaurants, suggestions NATURAL JOIN foods
+						WHERE restaurants.rid = suggestions.rid AND suggestions.uid = users.uid AND T.sender = U.receiver AND T.receiver = U.sender AND T.sender = $1 AND T.receiver = users.uid
+						ORDER BY sadded DESC";
+					$query = pg_prepare($dbconn, "suggestions", $stmt);
+					$result = pg_execute($dbconn, "suggestions", array($uid));
+					
+					$i = 1;
+					while ($row = pg_fetch_row($result)) {
+						echo "<tr><td>$i</td><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td></tr>";
+						$i++;
+					}
+				
+				?>
 			</table>
     </div>
 
