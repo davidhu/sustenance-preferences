@@ -27,10 +27,12 @@
 			<?php include "navbar.php"; ?> 
 			<h2><?php echo $rest_name." - ".$food_name; ?></h2>
 			<h3>How was it?</h3>
-<form action="#">
+<form action="diary.php">
+<input hidden id="fid" value=<?php echo $food; ?>></input>
+<input hidden id="rid" value=<?php echo $restaurant; ?>></input>
 <input type="button" class="btn btn-lg btn-default" id="delish" value="Delish!"></input>
 <input type="button" class="btn btn-lg btn-default" id="notdelish" value="Not Delish"></input>
-<input type="submit" class="btn btn-lg btn-success" disabled></input>
+<input type="submit" class="btn btn-lg btn-success submit" disabled></input>
 </form>
     </div>
 
