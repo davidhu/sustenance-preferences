@@ -76,6 +76,15 @@
 										<div class="form-group">
 											<input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
 										</div>
+										<label for="name">Name</label>
+										<div class="form-inline">
+											<div class="form-group">
+												<input type="text" name="first" class="form-control" size="25" tabindex="2" placeholder="First Name">
+											</div>
+											<div class="form-group">
+												<input type="text" name="last" class="form-control" size="25" tabindex="2" placeholder="Last Name">
+											</div>											
+										</div><br>
 										<label for="birthday">Birthday</label>
 										<div class="form-inline">
 											<div class="form-group">
@@ -89,8 +98,8 @@
 											</div>
 										</div><br>
 										<div class="form-group">
-											<input type="checkbox" name="gender" value="m"> Male <br>
-											<input type="checkbox" name="gender" value="f"> Female
+											<input type="radio" name="gender" value="m"> Male <br>
+											<input type="radio" name="gender" value="f"> Female
 										</div>
 
 										<div class="form-group">
