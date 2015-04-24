@@ -73,7 +73,7 @@
 		fid integer,
 		delish char(1),
 		fdadded timestamp,
-		PRIMARY KEY(uid, rid, fid)
+		PRIMARY KEY(uid, rid, fid, fdadded)
 	)';
 	
 	$result = pg_query($dbconn, $stmt7);
@@ -94,7 +94,7 @@
 		uid integer,
 		rid integer,
 		radded timestamp,
-		PRIMARY KEY(uid, rid)
+		PRIMARY KEY(uid, rid, radded)
 	)";
 	
 	$result = pg_query($dbconn, $stmt9);
