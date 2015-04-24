@@ -6,7 +6,15 @@
 	
 	$stmt = 'SELECT username, email, password, first, last, birthdate, gender FROM users WHERE uid = $1';
 	$query = pg_prepare($dbconn, "get_user_info", $stmt);
-	$result = pg_execute($dbconn, "get_user_info", array($uid));
+	
+	$result;
+	
+	if (isset($_GET["fid"])) {
+		$result = pg_execute($dbconn, "get_user_info", array($_GET["fid"]));
+	}
+	else {
+		$result = pg_execute($dbconn, "get_user_info", array($uid));
+	}
 	
 	$user_details = pg_fetch_array($result, 0, PGSQL_ASSOC);
 ?>

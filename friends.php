@@ -10,7 +10,7 @@
 	<head>
 		<title>Sustenance Preferences</title>
 		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.4-dist/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="">
+		<link rel="stylesheet" type="text/css" href="css/friends.css">
 	</head>
 
 	<body>
@@ -37,7 +37,7 @@
 
 				$i = 1;
 				while ($row = pg_fetch_row($result)) {
-					echo "<tr>";
+					echo "<tr class='clickable' data-href='profile.php?fid=$row[0]'>";
 					echo "<td>$i</td>";
 					echo "<td>$row[1]</td>";
 					echo "<td>$row[2]</td>";

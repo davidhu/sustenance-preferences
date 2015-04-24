@@ -13,4 +13,8 @@ $(function(){
 		$(this).parent().children().show();
 		$(this).hide();
 	});
+	
+	$(".clickable").click(function() {
+		window.document.location = $(this).data("href");
+	});
 });
