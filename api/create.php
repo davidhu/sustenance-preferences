@@ -160,6 +160,7 @@ INSERT INTO foods VALUES
 (5,2,'Cheeseburger',''),
 (5,3,'Bacon Burger',''),
 (5,4,'Bacon Cheeseburger',''),
+(6,1,'The World Cup','');
 (7,1,'Falafel Plate','Onions, lettuce, tomatos, olives & choice of hummus and babaghanou'),
 (7,2,'Leg of Lamb','Roasted leg of lamb with onions, tomato, lettuce, olives & humus or babaghanou'),
 (7,3,'Merguez Plate','Spicy lamb sausage with onions, lettuce, olives & humus or babaghanou'),
