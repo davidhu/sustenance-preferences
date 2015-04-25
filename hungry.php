@@ -3,8 +3,15 @@
 	include "api/logincheck.php";
 
 	$uid = $_SESSION["uid"];
-	$mylong = 1;
-	$mylat = 1;
+
+	if (!isset($_GET["longitude"]) || !isset($_GET["latitude"])) {
+?>
+	<script src="js/location.js"></script>
+<?php
+	} else {
+
+	$mylong = $_GET["longitude"];
+	$mylat = $_GET["latitude"];
 
 ?>
 
@@ -20,8 +27,6 @@
 
 		<div class="container">
 			<?php include "navbar.php"; ?> 
-
-			<h1>You should go to Shake Shack and get a burger!</h1>
 
 			<?php
 				
@@ -90,13 +95,55 @@
 				asort($c);
 				$c = array_slice($c, 0, 3, true);
 
-				print_r($c);
+				$d = array();
+				$i = 0;
+				foreach ($c as $key=>$value) {
+					$d[$i] = $key;
+					$i++;
+				}
 
+				exec("backend.exe $d[0], $d[1], $d[2]", $output);
+
+				$rid = intval($output[0]);
+
+				$stmt5 = "SELECT rid,fid
+									FROM restaurants JOIN suggestions USING (rid) 
+									WHERE rid = $1 
+									GROUP BY rid,fid 
+									ORDER BY COUNT(*) 
+									DESC LIMIT 1";
+
+				$query5 = pg_prepare($dbconn, "give", $stmt5);
+				$query5 = pg_execute($dbconn, "give", array($rid));
+				
+				$row = pg_fetch_row($query5);
+				$fid = $row[1];
+
+				$stmt6 = "SELECT rname, fname FROM restaurants NATURAL JOIN foods WHERE rid = $1 AND fid = $2";
+				$query6 = pg_prepare($dbconn, "final", $stmt6);
+				$query6 = pg_execute($dbconn, "final", array($rid, $fid));
+				
+				$row = pg_fetch_row($query6);
+				$rname = $row[0];
+				$fname = $row[1];
+
+				$stmt7 = "INSERT INTO recommended VALUES ($1, $2, now())";
+				$query7 = pg_prepare($dbconn, "insert", $stmt7);
+				$query7 = pg_execute($dbconn, "insert", array($rid, $fid));
+				
+
+	
 			?>
+			
+			<h1>You should go to <?php echo $rname; ?> and get a <?php echo $fname; ?>!</h1>		
+
+
 
 
     </div>
-
+<?php
+}
+?>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
