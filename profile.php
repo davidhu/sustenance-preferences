@@ -25,6 +25,7 @@
 		<title>Sustenance Preferences</title>
 		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.4-dist/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/profile.css">
+		<link rel="stylesheet" type="text/css" href="css/all.css">
 	</head>
 
 	<body>
@@ -104,5 +105,6 @@
         </div>
       </div>
     </div>
+	<footer></footer>
 	</body>
 </html>
