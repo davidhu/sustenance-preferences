@@ -4,7 +4,7 @@
 	
 	$uid = $_SESSION["uid"];
 	
-	$stmt = 'SELECT username, email, password, first, last, birthdate, gender FROM users WHERE uid = $1';
+	$stmt = 'SELECT username, email, first, last, birthdate, gender FROM users WHERE uid = $1';
 	$query = pg_prepare($dbconn, "get_user_info", $stmt);
 	
 	$result;
@@ -16,8 +16,8 @@
 		$result = pg_execute($dbconn, "get_user_info", array($uid));
 	}
 	
-	$user_details = pg_fetch_array($result, 0, PGSQL_ASSOC);
-?>
+	$user_details = pg_fetch_row($result);
+	?>
 
 <!DOCTYPE html>
 <html>
@@ -51,7 +51,7 @@
           <div class=" panel-info">
             <div class="panel-heading">
               <h3 class="panel-title">
-				<?php echo $user_details["first"]." ".$user_details["last"]; ?>
+				<?php echo $user_details[2]." ".$user_details[3]; ?>
 			  </h3>
             </div>
             <div class="panel-body">
@@ -63,34 +63,34 @@
                     <tbody>
                       <tr>
                         <th>Username</th>
-						<td><?php echo $user_details["username"]; ?></td>
+						<td><?php echo $user_details[0]; ?></td>
                       </tr>
 
                       <tr>
                         <th>First Name</th>
-						<td><?php echo $user_details["first"]; ?></td>
+						<td><?php echo $user_details[2]; ?></td>
                       </tr>
 
                       <tr>
                         <th>Last Name</th>
-						<td><?php echo $user_details["last"]; ?></td>
+						<td><?php echo $user_details[3]; ?></td>
                       </tr>
                    
                          <tr>
                              <tr>
                         <th>Date of Birth</th>
-						<td><?php echo $user_details["birthdate"]; ?></td>
+						<td><?php echo $user_details[4]; ?></td>
 						</tr>
 
                       <tr>
                         <tr>
                         <th>Gender</th>
-						<td><?php echo strtoupper($user_details["gender"]); ?></td>
+						<td><?php echo strtoupper($user_details[5]); ?></td>
                       </tr>
 
                       <tr>
                         <th>Email</th>
-						<td><?php echo $user_details["email"]; ?></td>
+						<td><?php echo $user_details[1]; ?></td>
                       </tr>
                       <tr>
                      

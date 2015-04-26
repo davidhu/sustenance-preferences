@@ -6,6 +6,6 @@ Required:
 -A computer with at least a dual-core processor
 -1 gigabyte of memory (recommended)
 
-Before using Sustenance Preferences, the files api/include.php and api/create.php must be editted depending on the name of your PostgreSQL server. The values for dbname, user, and password at line 12 of api/create.php and line 11 in api/include.php must be altered.
+Before using Sustenance Preferences, the files api/include.php and api/create.php must be edited depending on the name of your PostgreSQL server. The values for dbname, user, and password at line 12 of api/create.php and line 11 in api/include.php must be altered.
 
 Drag all of the directories and files onto the web server. Execute api/create.php on the web server to populate the database and then access Sustenance Preferences through index.php.
